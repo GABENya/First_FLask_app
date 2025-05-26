@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Todo — Организованный список дел</h1>
+
+<form method="post" class="form-add">
+    <input type="text" name="title" placeholder="Название" required />
+    <textarea name="comments" placeholder="Комментарии"></textarea>
+    <input type="text" name="tag" placeholder="Тег" />
+    <button type="submit">Добавить</button>
+</form>
+
+<div class="filters">
+    <form method="get" id="filterForm">
+        <input type="text" name="search" id="searchInput" placeholder="Поиск по названию" value="{{ search_query }}" autocomplete="off" />
+        <select name="tag" onchange="this.form.submit()">
+            <option value="">Все теги</option>
+            {% for tag in tags %}
+            <option value="{{ tag }}" {% if tag == filter_tag %}selected{% endif %}>{{ tag }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" name="sort" value="{{ 'desc' if sort_order == 'asc' else 'asc' }}">
+            Сортировать по дате: {{ 'Старые → Новые' if sort_order == 'asc' else 'Новые → Старые' }}
+        </button>
+    </form>
+</div>
+
+<ul class="list-records">
+    {% for todo in todos %}
+    <li>
+        <strong>{{ todo.title }}</strong> ({{ todo.created_at.strftime('%Y-%m-%d %H:%M:%S') }})<br />
+        <small>Тег: {{ todo.tag or '—' }}</small><br />
+        <small>Комментарии: {{ todo.comments or '—' }}</small><br />
+        <a href="{{ url_for('edit_todo', todo_id=todo.id) }}">Редактировать</a>
+        <form action="{{ url_for('delete_todo', todo_id=todo.id) }}" method="post" class="inline-form" onsubmit="return confirm('Удалить эту задачу?');">
+            <button type="submit">Удалить</button>
+        </form>
+    </li>
+    {% else %}
+    <li>Нет записей</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Редактировать Note</h1>
+<form method="post">
+    <input type="text" name="title" value="{{ note.title }}" required />
+    <textarea name="description">{{ note.description }}</textarea>
+    <input type="text" name="tag" value="{{ note.tag }}" />
+    <button type="submit">Сохранить</button>
+    <a href="{{ url_for('notes') }}">Отмена</a>
+</form>
+{% endblock %}

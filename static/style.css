@@ -1,0 +1,103 @@
+body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sidebar ul li a.active,
+.sidebar ul li a:hover {
+    color: #1abc9c;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+form.form-add input[type=text],
+form.form-add textarea,
+form#filterForm input[type=text],
+form#filterForm select {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    box-sizing: border-box;
+}
+
+form.form-add button,
+form#filterForm button {
+    padding: 10px 15px;
+    background-color: #1abc9c;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form.form-add button:hover,
+form#filterForm button:hover {
+    background-color: #16a085;
+}
+
+.list-records {
+    list-style: none;
+    padding: 0;
+}
+
+.list-records li {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.inline-form {
+    display: inline;
+    margin-left: 10px;
+}
+
+.inline-form button {
+    background-color: #e74c3c;
+}
+
+.inline-form button:hover {
+    background-color: #c0392b;
+}
+
+footer {
+    margin-top: auto;
+    padding-top: 20px;
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+}

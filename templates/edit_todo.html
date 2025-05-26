@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Редактировать Todo</h1>
+<form method="post">
+    <input type="text" name="title" value="{{ todo.title }}" required />
+    <textarea name="comments">{{ todo.comments }}</textarea>
+    <input type="text" name="tag" value="{{ todo.tag }}" />
+    <button type="submit">Сохранить</button>
+    <a href="{{ url_for('todo') }}">Отмена</a>
+</form>
+{% endblock %}

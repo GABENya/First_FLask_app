@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Структурирование мыслей</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="{{ url_for('todo') }}" class="{{ 'active' if request.path.startswith('/todo') else '' }}">Todo</a></li>
+                <li><a href="{{ url_for('notes') }}" class="{{ 'active' if request.path.startswith('/notes') else '' }}">Notes</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            {% block content %}{% endblock %}
+            <footer>
+                <p>Работу выполнили студенты группы 243 - 323 Бабенко Ян Евгеньевич и Мороз Артем Александрович</p>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
